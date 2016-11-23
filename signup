@@ -1,6 +1,9 @@
 #!/bin/sh
 SERVICE_NAME="sushilja.in"
-SERVICE_API_SIGNUP="http://api.sushilja.in/sushiljain/sh/signup/index.php"
+# SERVICE_API_SIGNUP="http://api.sushilja.in/signup/index.php"
+# SERVICE_API_SIGNUP="http://sushilja.in/sushiljain/sh/signup/index.php"
+SERVICE_API_SIGNUP="http://sushilja.in/sushiljain/sh/submit/index.php"
+# SERVICE_API_SIGNUP="http://sushilja.in/sushiljain/sh/signup/index.php"
 echo "...............welcome to signup @$SERVICE_NAME............... "
 
 
