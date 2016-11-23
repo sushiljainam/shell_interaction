@@ -48,7 +48,7 @@ echo "password saved, remember it."
 
 echo "wait! receiving results ... "
 # post request to signup api.
-curl -# -F 'u_email='$E_MAIL -F 'u_passwd='$PASSWD2 $SERVICE_API_SIGNUP
+curl -X POST -F 'u_email='$E_MAIL -F 'u_passwd='$PASSWD2 $SERVICE_API_SIGNUP
 # curl -# -X POST -F 'u_email='$E_MAIL';u_passwd='$PASSWD2 $SERVICE_API_SIGNUP #notOK
 # curl -#d -F 'u_email='$E_MAIL -F 'u_passwd='$PASSWD2 $SERVICE_API_SIGNUP
 # curl -# -X POST -F 'u_email='$E_MAIL -F 'u_passwd='$PASSWD2 $SERVICE_API_SIGNUP
