@@ -26,7 +26,7 @@ echo "password saved, remember it."
 
 
 # post request to signup api.
-curl -X POST -F 'u_email=$E_MAIL' -F 'u_passwd=$PASSWD2' $SERVICE_API_SIGNUP
+curl -X POST -F 'u_email='$E_MAIL -F 'u_passwd='$PASSWD2 $SERVICE_API_SIGNUP
 echo "Account created."
 
 
