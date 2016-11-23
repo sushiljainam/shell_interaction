@@ -10,27 +10,60 @@ echo "...............welcome to signup @$SERVICE_NAME............... "
 printf "what is your email?  -> "
 read E_MAIL
 # parse input to be valid, accept or re-ask
+until [ $E_MAIL ]
+do
+	printf "Required! email?  -> "
+	read E_MAIL
+done
+# until [[ $E_MAIL =~ ?*@?*.?* ]]
+# do
+# 	printf "Plz! :) correct email?  -> "
+# 	read E_MAIL
+# done
 echo "recorded as $E_MAIL."
 
 
 printf "set your password?  -> "
 read PASSWD
 # parse input to be valid, accept or re-ask
-
-until [ $PASSWD -eq $PASSWD2 ]
+until [ $PASSWD ]
 do
-	printf "confirm password?  -> "
-	read PASSWD2
-	# parse input to be valid, accept or re-ask
-	# check for both passwd to be equal, accept or re-ask
+	printf "Required! password?  -> "
+	read PASSWD
 done
-echo "$PASSWD2, "
+
+
+printf "confirm password?  -> "
+read PASSWD2
+# parse input to be valid, accept or re-ask
+# check for both passwd to be equal, accept or re-ask
+until [ $PASSWD = $PASSWD2 ]
+do
+	printf "confirm password must match.  -> "
+	read PASSWD2
+done
+# echo "$PASSWD2, "
 echo "password saved, remember it."
 
 
+echo "wait! receiving results ... "
 # post request to signup api.
-curl -X POST -F 'u_email='$E_MAIL -F 'u_passwd='$PASSWD2 $SERVICE_API_SIGNUP
-echo "Account created."
+curl -# -F 'u_email='$E_MAIL -F 'u_passwd='$PASSWD2 $SERVICE_API_SIGNUP
+# curl -# -X POST -F 'u_email='$E_MAIL';u_passwd='$PASSWD2 $SERVICE_API_SIGNUP #notOK
+# curl -#d -F 'u_email='$E_MAIL -F 'u_passwd='$PASSWD2 $SERVICE_API_SIGNUP
+# curl -# -X POST -F 'u_email='$E_MAIL -F 'u_passwd='$PASSWD2 $SERVICE_API_SIGNUP
+# REQ_RES=<(curl -# -X POST -F 'u_email='$E_MAIL -F 'u_passwd='$PASSWD2 $SERVICE_API_SIGNUP)
+# if [ $(($REQ_RES)) -gt 0 ]
+# then
+# 	echo "done successfully"
+# else
+# 	echo "not done successfully"
+# 	if [ $REQ_RES = false ]
+# 	then
+# 	 	echo "success is a myth"
+# 	fi
+# fi
+# echo "Account creating..."
 
 
 # verification mail sent
