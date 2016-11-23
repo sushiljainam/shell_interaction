@@ -17,10 +17,13 @@ printf "set your password?  -> "
 read PASSWD
 # parse input to be valid, accept or re-ask
 
-printf "confirm password?  -> "
-read PASSWD2
-# parse input to be valid, accept or re-ask
-# check for both passwd to be equal, accept or re-ask
+until [ $PASSWD -eq $PASSWD2 ]
+do
+	printf "confirm password?  -> "
+	read PASSWD2
+	# parse input to be valid, accept or re-ask
+	# check for both passwd to be equal, accept or re-ask
+done
 echo "$PASSWD2, "
 echo "password saved, remember it."
 
