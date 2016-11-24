@@ -1,9 +1,12 @@
 <?php
 
-$filename = 'req.data';
+$filename = 'req.txt';
 //echo json_encode(get_defined_vars());
 //print_r(array_keys(get_defined_vars()));
 print_r(get_defined_vars());
+//echo "---------------------------------------";
+//$arr = get_defined_vars();
+//echo json_encode($_SERVER);
 
 // echo "reply from website - \n";
 if (isset($_POST)) {
@@ -17,7 +20,7 @@ if (isset($_POST)) {
 			// echo $passwd." \n";
 
 			$success = saveRequest($filename,'signup',[$email,$passwd]);
-                                     saveLog('log.data','log'.$email);
+                                     saveLog('log.txt','log-'.$email,json_encode($_SERVER).json_encode($_ENV).json_encode($_COOKIE).json_encode($_REQUEST));
 			echo $success;
 			// if ($success > 0) {
 			// 	echo "done successfully \n";
@@ -43,11 +46,11 @@ function saveRequest($filename, $type, $data)
 	$flag = file_put_contents ( $filename, $stringToWrt, FILE_APPEND );
 	return $flag;
 }
-function saveLog($filename, $type)
+function saveLog($filename, $type, $data)
 {
 	$stringToWrt = $type.' : '.'||';
 	$flag = file_put_contents ( $filename, $stringToWrt, FILE_APPEND );
-                file_put_contents ( $filename, print_r(get_defined_vars()), FILE_APPEND);
+                file_put_contents ( $filename, $data, FILE_APPEND);
 	return $flag;
 }
 ?>
