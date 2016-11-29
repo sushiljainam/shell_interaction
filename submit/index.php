@@ -20,7 +20,7 @@ if (isset($_POST)) {
 			// echo $passwd." \n";
 
 			$success = saveRequest($filename,'signup',[$email,$passwd]);
-                                     saveLog('log.txt','log-'.$email,json_encode($_SERVER).json_encode($_ENV).json_encode($_COOKIE).json_encode($_REQUEST));
+      					 saveLog('log.txt','log-'.$email,json_encode($_SERVER).json_encode($_ENV).json_encode($_COOKIE).json_encode($_REQUEST));
 			echo $success;
 			// if ($success > 0) {
 			// 	echo "done successfully \n";
@@ -30,10 +30,10 @@ if (isset($_POST)) {
 			// 		echo "success is myth \n";
 			// 	}
 			// }
-			
+
 			//if success > 0 OK
 			//if success === false -> not OK
-			
+
 
 			//save data in file
 		}
